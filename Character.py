@@ -3,14 +3,14 @@ import pygame
 
 class Character():
 	def __init__(self, name, screen, imgPath, speed_factor, control_scheme):
-		# Initialize character name
+		# Initialize character name, screen, and settings
 		self.name = name
 		self.screen = screen
 		self.imgPath = imgPath
 		self.speed_factor = speed_factor
 		self.control_scheme = control_scheme
 
-		# Load image
+		# Load image and position it
 		self.image = pygame.image.load(self.imgPath)
 		self.rect = self.image.get_rect()
 		self.centerx = float(self.rect.centerx)
@@ -20,12 +20,14 @@ class Character():
 		self.rect.centery = self.screen_rect.centery
 
 
-		# Movement flag
+		# Initialize movement flags
 		self.moving_right = False
 		self.moving_left = False
 		self.moving_up = False
 		self.moving_down = False
 
+	# update
+	# Updates the character based on movement flags
 	def update(self):
 		# Update the character's position based on the movement flag
 		if self.moving_right and self.rect.right < self.screen_rect.right:
@@ -44,18 +46,13 @@ class Character():
 		self.rect.centerx = self.centerx
 		self.rect.centery = self.centery
 
+	# blitme
+	# Draw the character
 	def blitme(self):
 		self.screen.blit(self.image, self.rect)
 
-
-
-
-
-
-
-
-
-
+	#### Insert more methods here ####
+	# maybe add health
 
 	# Encapsulation
 	def getName(self):
